@@ -75,6 +75,7 @@ class Shrine
         #     Attacher.deserialize_column(nil)
         #     #=> nil
         def deserialize_column(data)
+          column_serializer = Shrine::Plugins::Column::JsonSerializer
           if column_serializer && data && !data.is_a?(Hash)
             column_serializer.load(data)
           else
